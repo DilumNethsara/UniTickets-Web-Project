@@ -1,0 +1,359 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 5%;
+  }
+  
+  .sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #011c30;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 30px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .sidebar ul li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sidebar ul li a {
+    display: block;
+    padding: 15px 0;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #011c30;
+  }
+  
+  .main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  .menu-toggle {
+    display: none;
+    margin: 10px;
+    background-color: #011c30;
+    color: #ecf0f1;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  
+  .menu-toggle:hover {
+    background-color: #34495e;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+  
+    .sidebar.active {
+      transform: translateX(0);
+    }
+  
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  }
+  
+  .settings-container {
+    width: 90%;
+    max-width: 700px;
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .settings-container h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .settings-section {
+    margin-bottom: 30px;
+  }
+  
+  .settings-section h2 {
+    color: #011c30;
+    margin-bottom: 15px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #2c3e50;
+  }
+  
+  .btn-save {
+    background-color: #011c30;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+  }
+  
+  .btn-save:hover {
+    background-color: #34495e;
+  }
+  
+  @media (max-width: 768px) {
+    .settings-container {
+      padding: 15px 20px;
+    }
+  
+    .btn-save {
+      width: 100%;
+    }
+  }
+  
+  .settings-section form input[type="password"] {
+    font-size: 14px;
+  }
+  
+  input[type="text"]:invalid,
+  input[type="password"]:invalid {
+    border-color: #e74c3c;
+  }
+  
+  input[type="text"]:valid,
+  input[type="password"]:valid {
+    border-color: #2ecc71;
+  }
+  
+  #card-number {
+    letter-spacing: 2px;
+  }
+  
+  #cvv {
+    width: 100px;
+  }
+  
+  .btn-save {
+    margin-top: 10px;
+  }
+  
+  .bank-crd {
+    width: 75px;
+  }
+  
+  .history-container {
+    width: 100%;
+    max-width: 10000px;
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .history-container h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .history-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .item-details {
+    flex: 2;
+  }
+  
+  .item-details h2 {
+    margin: 0 0 10px;
+    color: #34495e;
+  }
+  
+  .item-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .item-status {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .item-status p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .status-paid {
+    color: #27ae60;
+    font-weight: bold;
+  }
+  
+  .status-pending {
+    color: #e67e22;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .history-item {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+  
+    .item-status {
+      text-align: center;
+    }
+  }
+  
+  .contact-container {
+    width: 90%;
+    max-width: 600px;
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-container h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  #contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #34495e;
+  }
+  
+  #contact-form input,
+  #contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  #contact-form input:focus,
+  #contact-form textarea:focus {
+    border-color: #2980b9;
+    outline: none;
+  }
+  
+  .btn-submit {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #011c30;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background-color: #1f5a85;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-container {
+      padding: 15px 20px;
+    }
+  }
+  
+  .date-time {
+    margin-top: 20px;
+  }
+  
