@@ -22,7 +22,7 @@
       background-position: center;
       background-attachment: fixed;
       width: 100%;
-      background-image: url("img/home.png");
+      background-image: url("../img/home.png");
     }
 
     .navbar {
@@ -35,7 +35,7 @@
       <nav class="navbar navbar-expand-lg nav">
         <div class="container">
           <a class="navbar-brand" href="#"
-            ><img src="img/logo.png" class="logo"
+            ><img src="../img/logo.png" class="logo"
           /></a>
           <button
             class="navbar-toggler"
@@ -177,7 +177,7 @@
         <div class="row">
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/1.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/1.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Waiwarna</h5>
                 <p class="card-text">
@@ -189,7 +189,7 @@
           </div>
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/2.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/2.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Sathsara Anurawa</h5>
                 <p class="card-text">
@@ -201,7 +201,7 @@
           </div>
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/4.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/4.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Sathsara Anurawa</h5>
                 <p class="card-text">
@@ -213,7 +213,7 @@
           </div>
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/4.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/4.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Sathsara Anurawa</h5>
                 <p class="card-text">
@@ -230,10 +230,6 @@
     <footer class="bg-dark text-white py-3 text-center">
       <p>&copy; 2024 UniTicket. All Rights Reserved.</p>
     </footer>
-
-    <?php
-    require_once 'ConnectDB.php';
-    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
