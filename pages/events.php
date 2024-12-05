@@ -11,7 +11,7 @@
     <nav class="navbar navbar-expand-lg nav bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#"
-          ><img src="img/logo.png" class="logo"
+          ><img src="../img/logo.png" class="logo"
         /></a>
         <button
           class="navbar-toggler"
@@ -90,7 +90,7 @@
         <div class="row">
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/1.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/1.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Waiwarna</h5>
                 <p class="card-text">
@@ -102,7 +102,7 @@
           </div>
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/2.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/2.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Sathsara Anurawa</h5>
                 <p class="card-text">
@@ -114,7 +114,7 @@
           </div>
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/4.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/4.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Sathsara Anurawa</h5>
                 <p class="card-text">
@@ -126,7 +126,7 @@
           </div>
           <div class="col">
             <div class="card" style="width: 18rem">
-              <img src="img/slide/4.jpg" class="card-img-top" alt="..." />
+              <img src="../img/slide/4.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">Sathsara Anurawa</h5>
                 <p class="card-text">

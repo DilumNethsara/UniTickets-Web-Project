@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg nav bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#"
-          ><img src="img/logo.png" class="logo"
+          ><img src="../img/logo.png" class="logo"
         /></a>
         <button
           class="navbar-toggler"
@@ -133,7 +133,7 @@
         <div class="col">
           <div style="margin: 30px">
             <img
-              src="img/slide/1.jpg"
+              src="../img/slide/1.jpg"
               class="card-img-top"
               alt="..."
               style="width: 20rem; border-radius: 10px"

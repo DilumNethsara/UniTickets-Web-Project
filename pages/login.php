@@ -11,7 +11,7 @@
     body {
       background-size: cover;
       background-position: center;
-      background-image: url("img/background.png");
+      background-image: url("../img/background.png");
     }
   </style>
   <body>
@@ -44,7 +44,7 @@
       <button
         type="submit"
         class="btn btn-primary mt-4 btn"
-        style="background-image: url(img/background.png)"
+        style="background-image: url(../img/background.png)"
       >
         <b>Login</b>
       </button>
