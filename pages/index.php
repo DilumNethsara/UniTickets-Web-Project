@@ -231,6 +231,10 @@
       <p>&copy; 2024 UniTicket. All Rights Reserved.</p>
     </footer>
 
+    <?php
+    require_once 'ConnectDB.php';
+    ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
