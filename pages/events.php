@@ -96,7 +96,7 @@
                 <p class="card-text">
                   23th November 2024<br />University of Sri Jayawardhanapura<br />Auditorium
                 </p>
-                <a href="#" class="btn btn-primary">Book Now >></a>
+                <a href="event-details.php" class="btn btn-primary">Book Now >></a>
               </div>
             </div>
           </div>

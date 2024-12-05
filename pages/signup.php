@@ -58,7 +58,7 @@
         <b>Sign Up</b>
       </button>
       <div class="register-link">
-        <p>You already have an account? <a href="login.html">Login</a></p>
+        <p>You already have an account? <a href="login.php">Login</a></p>
       </div>
     </form>
   </body>

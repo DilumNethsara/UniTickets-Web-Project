@@ -140,7 +140,7 @@
             />
           </div>
           <div style="margin: 20px">
-            <a href="" class="btn btn-secondary" style="width: 20rem"
+            <a href="checkout.php" class="btn btn-secondary" style="width: 20rem"
               >BOOK NOW!</a
             >
           </div>

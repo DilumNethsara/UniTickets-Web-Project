@@ -66,7 +66,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li class="dropdown-item">
-                    <h6 class="mb-0">University of Vavuniya</h6>
+                    <a href="events.php"><h6 class="mb-0">University of Vavuniya</h6><a>
                   </li>
                   <li><hr class="dropdown-divider" /></li>
                   <li class="dropdown-item">
@@ -93,11 +93,11 @@
                 <a class="nav-link nav-txt" href="#">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-txt login" href="login.html">Login</a>
+                <a class="nav-link nav-txt login" href="login.php">Login</a>
               </li>
               <li class="nav-item">
                 <button class="sign-up nav-txt">
-                  <a href="signup.html"> Sign Up</a>
+                  <a href="signup.php"> Sign Up</a>
                 </button>
               </li>
             </ul>
@@ -183,7 +183,7 @@
                 <p class="card-text">
                   23th November 2024<br />University of Sri Jayawardhanapura<br />Auditorium
                 </p>
-                <a href="#" class="btn btn-primary">Book Now >></a>
+                <a href="event-details.php" class="btn btn-primary">Book Now >></a>
               </div>
             </div>
           </div>
@@ -230,10 +230,6 @@
     <footer class="bg-dark text-white py-3 text-center">
       <p>&copy; 2024 UniTicket. All Rights Reserved.</p>
     </footer>
-
-    <?php
-    require_once 'ConnectDB.php';
-    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
