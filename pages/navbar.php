@@ -75,5 +75,17 @@ function mainNavBar(){
       </nav>';
 }
 
+function dashboard_navBar(){
+  echo '<div class="sidebar" id="sidebar">
+          <h2>Dashboard</h2>
+          <ul>
+            <li><a href="user-dashboard-profile.php">Account Settings</a></li>
+            <li><a href="dashboard-booking-history.php">My Bookings</a></li>
+            <li><a href="dashboard-contact.php">Contact Admin</a></li>
+            <li><a href="#logout">Logout</a></li>
+          </ul>
+        </div>';
+}
+
 
 ?>
