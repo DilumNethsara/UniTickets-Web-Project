@@ -1,7 +1,7 @@
 <?php
 
 function mainNavBar(){
-    echo '<nav class="navbar navbar-expand-lg nav">
+    echo '<nav class="navbar navbar-expand-lg nav bg-dark">
         <div class="container">
           <a class="navbar-brand" href="#"
             ><img src="../img/logo.png" class="logo"
@@ -74,6 +74,50 @@ function mainNavBar(){
         </div>
       </nav>';
 }
+
+
+function mainNavBarSub(){
+  echo '<nav class="navbar navbar-expand-lg nav bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><img src="../img/logo.png" class="logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link nav-txt" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-txt" href="#events">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-txt" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-txt login" href="login.php">Login</a>
+            </li>
+            <li class="nav-item">
+              <button class="sign-up nav-txt">
+                <a href="signup.php"> Sign Up</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>';
+}
+
 
 function dashboard_navBar(){
   echo '<div class="sidebar" id="sidebar">
