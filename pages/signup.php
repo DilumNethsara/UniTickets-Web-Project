@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../css/bootsrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="../css/custom/style-login.css" rel="stylesheet" />
+    <link href="../css/custom/style-login-signup.css" rel="stylesheet" />
     <title>Sign Up form</title>
   </head>
   <style>
