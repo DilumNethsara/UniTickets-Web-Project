@@ -8,15 +8,6 @@
     <link href="../css/custom/style-admin-dashboard.css" rel="stylesheet" />
   </head>
   <body>
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Admin Dashboard - Upload Event</title>
-        <link rel="stylesheet" href="styles.css" />
-      </head>
-      <body>
         <div class="admin-container">
           <h2>Upload Event</h2>
           <form id="event-form" enctype="multipart/form-data">
@@ -112,7 +103,5 @@
         </div>
 
         <script src="script.js"></script>
-      </body>
-    </html>
   </body>
 </html>
