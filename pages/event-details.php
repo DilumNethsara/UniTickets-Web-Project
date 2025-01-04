@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  $getEmail = $_SESSION['email'];
+  $getUser = $_SESSION['username'];
+  $getStatus = $_SESSION['loginStatus'];
+  $getCategory = $_SESSION['category'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

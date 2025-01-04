@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  $getEmail = $_SESSION['email'];
+  $getUser = $_SESSION['username'];
+  $getStatus = $_SESSION['loginStatus'];
+  $getCategory = $_SESSION['category'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,9 +44,9 @@
 
     <?php
   
-    require_once 'navbar.php';
+    require_once '../public/navbar.php';
 
-    mainNavBar();
+    fixNavBars($getStatus,$getEmail,$getUser,$getCategory);
   
   ?>
       

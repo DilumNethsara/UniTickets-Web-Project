@@ -103,3 +103,9 @@ a:active {
   margin-left: 20px;
   color: rgb(255, 255, 255);
 }
+
+.logoutbtn{
+  background-color: transparent;
+  color: white;
+  align-items: center;
+}

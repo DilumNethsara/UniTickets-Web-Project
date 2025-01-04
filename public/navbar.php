@@ -75,8 +75,14 @@ function mainNavBarPages(){
       </nav>';
 }
 
-function mainNavBarLogged(){
-  echo '<nav class="navbar navbar-expand-lg nav">
+function mainNavBarLogged($email,$username,$category){
+
+                            if(isset($_POST['logout'])){
+                              $_SESSION['loginStatus']=false;
+                              header('Location: index.php');
+                            }
+
+  ?><nav class="navbar navbar-expand-lg nav">
         <div class="container">
           <a class="navbar-brand" href="#"
             ><img src="../img/logo.png" class="logo"
@@ -144,28 +150,29 @@ function mainNavBarLogged(){
                       </div>
       
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                          <li class="user-details">User name</li>
+                          <li class="user-details"><?php echo $username; ?></li>
                           <li> </li>
-                          <li class="user-details" style="font-size: 12px; margin-bottom: 10px;">User category</li>
+                          <li class="user-details" style="font-size: 12px; margin-bottom: 10px;"><?php echo $category; ?></li>
                           <li><a class="dropdown-item" href="user-dashboard-profile.php">Dashboard</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Log out</a></li>
+                          <li>
+                            <form action="index.php" method="post">
+                              <input class="logoutbtn" type="submit" value="Logout" name="logout"/>
+                            </form>
+                          </li>
                       </ul>
                   </div>
-              </div>  
-
-                      
-                              
+              </div>                  
               </li>
-              
             </ul>
           </div>
         </div>
-      </nav>';
+      </nav>
+      <?php
 }
 
-function mainNavBarLoggedPages(){
-  echo '<nav class="navbar navbar-expand-lg nav">
+function mainNavBarLoggedPages(){?>
+    <nav class="navbar navbar-expand-lg nav">
         <div class="container">
           <a class="navbar-brand" href="#"
             ><img src="../img/logo.png" class="logo"
@@ -238,19 +245,17 @@ function mainNavBarLoggedPages(){
                           <li class="user-details" style="font-size: 12px; margin-bottom: 10px;">User category</li>
                           <li><a class="dropdown-item" href="user-dashboard-profile.php">Dashboard</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Log out</a></li>
+                          <li><a class="dropdown-item" href="">Log out</a></li>
                       </ul>
                   </div>
-              </div>  
-
-                      
-                              
+              </div>                
               </li>
               
             </ul>
           </div>
         </div>
-      </nav>';
+      </nav>
+      <?php
 }
 
 function mainNavBar(){
@@ -339,6 +344,14 @@ function dashboard_navBar(){
             <li><a href="#logout">Logout</a></li>
           </ul>
         </div>';
+}
+
+function fixNavBars($status,$email,$username,$category){
+  if($status==true){
+    mainNavBarLogged($email,$username,$category);
+  }else{
+    mainNavBar();
+  }
 }
 
 

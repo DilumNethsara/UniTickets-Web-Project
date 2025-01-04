@@ -47,6 +47,7 @@ function signup($connect){
                     foreach ($row as $key => $value) {
                         if($value==$email){
                             $state = false;
+                            echo "This email is already registered";
                             break;
                         }else{
                             $state = true;
@@ -72,7 +73,7 @@ function login($connect){
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = "SELECT password,email FROM users";
+        $sql = "SELECT password,email,username,user_category FROM users";
 
         $arr = GetData($connect,$sql);
 
@@ -81,9 +82,16 @@ function login($connect){
         foreach ($arr as $value) {
             $getEmail = $value['email'];
             $getPw = $value['password'];
+            $getUname = $value['username'];
+            $getCategory = $value['user_category'];
 
             if ($email==$getEmail && $password==$getPw) {
                 $state = true;
+                session_start();
+                $_SESSION['email']=$getEmail;
+                $_SESSION['username']=$getUname;
+                $_SESSION['loginStatus']=true;
+                $_SESSION['category']=$getCategory;
                 header('Location: index.php');
                 break;
             }else{
@@ -92,11 +100,14 @@ function login($connect){
         }
 
         if(!$state){
+            $_SESSION['loginStatus']=false;
             echo "wrong pw or email";
         }
 
     }
 }
+
+
 
 
 ?>
