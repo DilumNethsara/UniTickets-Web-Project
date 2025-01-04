@@ -15,11 +15,12 @@
     }
   </style>
   <body>
-    <form class="mx-auto">
+    <form class="mx-auto" action="signup.php" method="post">
       <h2 class="text-center">Sign Up</h2>
       <div>
         <label for="Inputusername" class="form-label">Username</label>
         <input
+        name="username"
           type="text"
           class="form-control"
           placeholder="Username"
@@ -36,27 +37,43 @@
           class="form-control"
           placeholder="E-mail"
           style="background-color: #e8e9eb"
+          name="email"
         />
       </div>
 
       <div class="InputPassword">
-        <label for="InputPassword" class="form-label" style="margin-top: 10px"
-          >Password</label
-        >
-        <input
-          type="password"
+        <label for="InputPassword" class="form-label" style="margin-top: 10px">Password</label>
+        <input type="password"
           class="form-control"
           placeholder="password"
           style="background-color: #e8e9eb"
-        />
+          name="password"/>
       </div>
-      <button
+
+      <div class="InputPassword">
+        <label for="InputPassword" class="form-label" style="margin-top: 10px">Confirm Password</label>
+        <input type="password"
+          class="form-control"
+          placeholder="confirm password"
+          style="background-color: #e8e9eb"
+          name="confirmPassword"/>
+      </div>
+
+      <input
         type="submit"
         class="btn btn-primary mt-4 btn"
         style="background-image: url(../img/background.png)"
-      >
-        <b>Sign Up</b>
-      </button>
+        value="SignUp"
+        name="submit"
+      />
+
+      <?php 
+      require_once "../public/func.php";
+      require_once "../public/connectDB.php";
+
+      signup($connect);
+      ?>
+
       <div class="register-link">
         <p>You already have an account? <a href="login.php">Login</a></p>
       </div>

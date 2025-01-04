@@ -15,7 +15,7 @@
     }
   </style>
   <body>
-    <form class="mx-auto">
+    <form class="mx-auto" action="login.php" method="post">
       <h2 class="text-center">Login</h2>
       <div>
         <label for="Inputusername" class="form-label">E-mail</label>
@@ -24,6 +24,7 @@
           class="form-control"
           placeholder="E-mai"
           style="background-color: #e8e9eb"
+          name="email"
         />
       </div>
       <div class="InputPassword">
@@ -33,6 +34,7 @@
           class="form-control"
           placeholder="password"
           style="background-color: #e8e9eb"
+          name="password"
         />
       </div>
       <div class="remember-forget" style="margin: 10px">
@@ -41,14 +43,18 @@
         </label>
         <a href="#">Forget password?</a>
       </div>
-      <button
+      <input
         type="submit"
         class="btn btn-primary mt-4 btn"
         style="background-image: url(../img/background.png)"
-      >
-        <b>Login</b>
-      </button>
+        name="login"/>
       <div class="register-link">
+      <?php 
+      require_once "../public/func.php";
+      require_once "../public/connectDB.php";
+
+      login($connect);
+      ?>
         <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
       </div>
     </form>
