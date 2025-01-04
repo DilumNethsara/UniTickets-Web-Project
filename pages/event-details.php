@@ -20,8 +20,9 @@
 
   <?php
   
-    require_once 'navbar.php';
-    mainNavBarPages();
+    require_once '../public/navbar.php';
+    require_once '../public/connectDB.php';
+    mainNavBarPages($connect);
   
   ?>
 

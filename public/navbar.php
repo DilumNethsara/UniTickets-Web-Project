@@ -1,7 +1,10 @@
 <?php
 
-function mainNavBarPages(){
-    echo '<nav class="navbar navbar-expand-lg nav bg-dark">
+require_once "connectDB.php";
+require_once "func.php";
+
+function mainNavBarPages($connect){
+    ?><nav class="navbar navbar-expand-lg nav bg-dark">
         <div class="container">
           <a class="navbar-brand" href="#"
             ><img src="../img/logo.png" class="logo"
@@ -20,7 +23,7 @@ function mainNavBarPages(){
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link nav-txt" href="#">Home</a>
+                <a class="nav-link nav-txt" href="index.php">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -34,25 +37,9 @@ function mainNavBarPages(){
                   Universities
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li class="dropdown-item">
-                    <a href="events.php"><h6 class="mb-0">University of Vavuniya</h6><a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Colombo</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Peradeniya</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Jaffna</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Moratuwa</h6>
-                  </li>
+                <?php 
+                  getUni($connect); 
+                  ?>
                 </ul>
               </li>
               <li class="nav-item">
@@ -72,10 +59,11 @@ function mainNavBarPages(){
             </ul>
           </div>
         </div>
-      </nav>';
+      </nav>
+      <?php
 }
 
-function mainNavBarLogged($email,$username,$category){
+function mainNavBarLogged($email,$username,$category,$connect){
 
                             if(isset($_POST['logout'])){
                               $_SESSION['loginStatus']=false;
@@ -84,7 +72,7 @@ function mainNavBarLogged($email,$username,$category){
 
   ?><nav class="navbar navbar-expand-lg nav">
         <div class="container">
-          <a class="navbar-brand" href="#"
+          <a class="navbar-brand" href="index.php"
             ><img src="../img/logo.png" class="logo"
           /></a>
           <button
@@ -115,25 +103,9 @@ function mainNavBarLogged($email,$username,$category){
                   Universities
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li class="dropdown-item">
-                    <a href="events.php"><h6 class="mb-0">University of Vavuniya</h6><a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Colombo</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Peradeniya</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Jaffna</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Moratuwa</h6>
-                  </li>
+                  <?php 
+                  getUni($connect); 
+                  ?>
                 </ul>
               </li>
               <li class="nav-item">
@@ -153,7 +125,18 @@ function mainNavBarLogged($email,$username,$category){
                           <li class="user-details"><?php echo $username; ?></li>
                           <li> </li>
                           <li class="user-details" style="font-size: 12px; margin-bottom: 10px;"><?php echo $category; ?></li>
-                          <li><a class="dropdown-item" href="user-dashboard-profile.php">Dashboard</a></li>
+
+                          <?php
+                          
+                            if($category=='user'){?>
+                              <li><a class="dropdown-item" href="user-dashboard-profile.php">Dashboard</a></li><?php
+                            }elseif($category=='admin'){
+                              ?>
+                              <li><a class="dropdown-item" href="manage-events.php">Admin Dashboard</a></li>
+                              <?php
+                            }
+                          
+                          ?>
                           <li><hr class="dropdown-divider"></li>
                           <li>
                             <form action="index.php" method="post">
@@ -171,10 +154,14 @@ function mainNavBarLogged($email,$username,$category){
       <?php
 }
 
-function mainNavBarLoggedPages(){?>
-    <nav class="navbar navbar-expand-lg nav">
+function mainNavBarLoggedPages($email,$username,$category,$connect){
+        if(isset($_POST['logout'])){
+           $_SESSION['loginStatus']=false;
+            header('Location: index.php');
+        }?>
+    <nav class="navbar navbar-expand-lg nav bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="#"
+          <a class="navbar-brand" href="index.php"
             ><img src="../img/logo.png" class="logo"
           /></a>
           <button
@@ -205,25 +192,9 @@ function mainNavBarLoggedPages(){?>
                   Universities
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li class="dropdown-item">
-                    <a href="events.php"><h6 class="mb-0">University of Vavuniya</h6><a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Colombo</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Peradeniya</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Jaffna</h6>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="dropdown-item">
-                    <h6 class="mb-0">University of Moratuwa</h6>
-                  </li>
+                <?php 
+                  getUni($connect); 
+                  ?>
                 </ul>
               </li>
               <li class="nav-item">
@@ -240,12 +211,27 @@ function mainNavBarLoggedPages(){?>
                       </div>
       
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                          <li class="user-details">User name</li>
+                          <li class="user-details"><?php echo $username; ?></li>
                           <li> </li>
-                          <li class="user-details" style="font-size: 12px; margin-bottom: 10px;">User category</li>
-                          <li><a class="dropdown-item" href="user-dashboard-profile.php">Dashboard</a></li>
+                          <li class="user-details" style="font-size: 12px; margin-bottom: 10px;"><?php echo $category; ?></li>
+
+                          <?php
+                          
+                            if($category=='user'){?>
+                              <li><a class="dropdown-item" href="user-dashboard-profile.php">Dashboard</a></li><?php
+                            }elseif($category=='admin'){
+                              ?>
+                              <li><a class="dropdown-item" href="manage-events.php">Admin Dashboard</a></li>
+                              <?php
+                            }
+                          
+                          ?>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="">Log out</a></li>
+                          <li>
+                            <form action="index.php" method="post">
+                              <input class="logoutbtn" type="submit" value="Logout" name="logout"/>
+                            </form>
+                          </li>
                       </ul>
                   </div>
               </div>                
@@ -258,8 +244,9 @@ function mainNavBarLoggedPages(){?>
       <?php
 }
 
-function mainNavBar(){
-  echo '<nav class="navbar navbar-expand-lg nav">
+function mainNavBar($connect){
+  ?>
+  <nav class="navbar navbar-expand-lg nav">
       <div class="container">
         <a class="navbar-brand" href="#"
           ><img src="../img/logo.png" class="logo"
@@ -292,25 +279,9 @@ function mainNavBar(){
                 Universities
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li class="dropdown-item">
-                  <a href="events.php"><h6 class="mb-0">University of Vavuniya</h6><a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li class="dropdown-item">
-                  <h6 class="mb-0">University of Colombo</h6>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li class="dropdown-item">
-                  <h6 class="mb-0">University of Peradeniya</h6>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li class="dropdown-item">
-                  <h6 class="mb-0">University of Jaffna</h6>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li class="dropdown-item">
-                  <h6 class="mb-0">University of Moratuwa</h6>
-                </li>
+              <?php 
+                  getUni($connect); 
+                  ?>
               </ul>
             </li>
             <li class="nav-item">
@@ -330,29 +301,73 @@ function mainNavBar(){
           </ul>
         </div>
       </div>
-    </nav>';
+    </nav>
+    
+    <?php
 }
 
 
 function dashboard_navBar(){
-  echo '<div class="sidebar" id="sidebar">
+  ?>
+  <div class="sidebar" id="sidebar">
           <h2>Dashboard</h2>
           <ul>
             <li><a href="user-dashboard-profile.php">Account Settings</a></li>
             <li><a href="dashboard-booking-history.php">My Bookings</a></li>
             <li><a href="dashboard-contact.php">Contact Admin</a></li>
-            <li><a href="#logout">Logout</a></li>
+            <li><a href="index.php">Main Menu</a></li>
           </ul>
-        </div>';
+        </div>
+        <?php
 }
 
-function fixNavBars($status,$email,$username,$category){
+function admin_dashboard_navBar(){
+  ?><div class="sidebar" id="sidebar">
+          <h2>Dashboard</h2>
+          <ul>
+            <li><a href="#">Manage events</a></li>
+            <li><a href="index.php">Main Menu</a></li>
+          </ul>
+        </div>
+  <?php
+}
+
+function fixNavBars($status,$email,$username,$category,$connect){
   if($status==true){
-    mainNavBarLogged($email,$username,$category);
+    mainNavBarLogged($email,$username,$category,$connect);
   }else{
-    mainNavBar();
+    mainNavBar($connect);
   }
 }
 
+function fixNavPages($status,$email,$username,$category,$connect){
+  if($status==true){
+    mainNavBarLoggedPages($email,$username,$category,$connect);
+  }else{
+    mainNavBarPages($connect);
+  }
+}
+
+function getUni($connect){
+  $sql = "SELECT name,university_id FROM universities";
+  $arr = GetData($connect,$sql);
+
+  foreach ($arr as $value) {
+    $getName = $value['name'];
+    $getId = $value['university_id'];
+    ?>
+    <li class="dropdown-item">
+    <a href="events.php?uni_id=<?php echo $getId; ?>"> 
+      <h6 class='mb-0'>
+      <?php
+         echo $getName;
+         ?></h6><a>
+      </li>
+      <li><hr class="dropdown-divider" /></li>
+  <?php
+
+  }
+
+}
 
 ?>

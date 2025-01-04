@@ -46,7 +46,7 @@
   
     require_once '../public/navbar.php';
 
-    fixNavBars($getStatus,$getEmail,$getUser,$getCategory);
+    fixNavBars($getStatus,$getEmail,$getUser,$getCategory,$connect);
   
   ?>
       

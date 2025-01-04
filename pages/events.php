@@ -1,9 +1,15 @@
 <?php
+
+  if(isset($_GET['uni_id'])){
+    $id = $_GET['uni_id'];
+  }
   session_start();
   $getEmail = $_SESSION['email'];
   $getUser = $_SESSION['username'];
   $getStatus = $_SESSION['loginStatus'];
   $getCategory = $_SESSION['category'];
+  //$getName = $_SESSION['uniName'];
+  $getId = $_SESSION['uniId'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,12 +24,15 @@
 
   <?php
   
-    require_once 'navbar.php';
-    mainNavBarPages();
+    require_once '../public/navbar.php';
+    require_once '../public/connectDB.php';
+    require_once "../public/event-func.php";
+
+    fixNavPages($getStatus,$getEmail,$getUser,$getCategory,$connect);
   
   ?>
 
-    <h2 class="event-header">University of Vavuniya</h2>
+    <h2 class="event-header"><?php getUniName($connect,$id); ?></h2>
     <section id="events">
       <div
         class="container text-center d-flex justify-content-center"

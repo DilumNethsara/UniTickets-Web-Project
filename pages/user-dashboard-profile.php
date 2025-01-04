@@ -10,7 +10,7 @@
   <body>
   <?php
         
-        require_once 'navbar.php';
+        require_once '../public/navbar.php';
 
         dashboard_navBar();
       
