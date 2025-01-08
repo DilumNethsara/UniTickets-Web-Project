@@ -4,6 +4,7 @@
   $getUser = $_SESSION['username'];
   $getStatus = $_SESSION['loginStatus'];
   $getCategory = $_SESSION['category'];
+  $getUid = $_SESSION['uid'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

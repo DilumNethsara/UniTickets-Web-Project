@@ -1,9 +1,10 @@
 <?php
   session_start();
-  $getEmail = $_SESSION['email'];
-  $getUser = $_SESSION['username'];
-  $getStatus = $_SESSION['loginStatus'];
-  $getCategory = $_SESSION['category'];
+    $getEmail = $_SESSION['email'];
+    $getUser = $_SESSION['username'];
+    $getStatus = $_SESSION['loginStatus'];
+    $getCategory = $_SESSION['category'];
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +66,7 @@
 <body>
 <?php
     require_once "../public/navbar.php";
+    require_once "../public/manage-events-func.php";
 
     admin_dashboard_navBar();
 
@@ -83,82 +85,63 @@
                 <th>Time</th>
                 <th>Venue</th>
                 <th>Description</th>
-                <th>Image</th>
                 <th>Price</th>
                 <th>Max Tickets</th>
             </tr>
         </thead>
         <tbody>
  
-            <tr>
-                <td>1</td>
-                <td>University A</td>
-                <td>Tech Conference</td>
-                <td>2024-12-30</td>
-                <td>10:00 AM</td>
-                <td>Auditorium</td>
-                <td>An exciting tech event.</td>
-                <td><img src="image1.png" alt="Event Image" style="width:50px;height:50px;"></td>
-                <td>50.00</td>
-                <td>200</td>
-            </tr>
+            
+                <?php getDetails($connect); ?>
+           
         </tbody>
     </table>
   </div>
   <div class="row">
-  <form action="/add-event" method="POST" enctype="multipart/form-data">
+  <form action="manage-events.php" method="post" enctype="multipart/form-data">
         <h2>Add Event</h2>
-        <select name="university_id" required>
+        <select name="university_name" required>
             <option value="" disabled selected>Select University</option>
-            <option value="1">University A</option>
-            <option value="2">University B</option>
+            <?php getUniAdmin($connect); ?>
         </select>
         <input type="text" name="event_name" placeholder="Event Name" required>
         <input type="date" name="event_date" required>
         <input type="time" name="event_time" required>
         <input type="text" name="venue" placeholder="Venue">
         <textarea name="description" placeholder="Description"></textarea>
-        <input type="file" name="image" accept="image/*">
+        <input type="file" name="image">
         <input type="number" name="ticket_price" placeholder="Ticket Price" required>
-        <input type="number" name="max_tickets" placeholder="Max Tickets" required>
-        <button type="submit">Add Event</button>
+        <input type="number" name="num_of_tickets" placeholder="No.of Tickets" required>
+        <button type="submit" name="addEvent">Add Event</button>
+        <?php addEv($connect); ?>
     </form>
   </div>
   <div class="row">
-  <form action="/update-event" method="POST" enctype="multipart/form-data">
+  <form action="manage-events.php" method="post" enctype="multipart/form-data">
         <h2>Update Event</h2>
         <input type="number" name="event_id" placeholder="Event ID" required>
-        <input type="text" name="event_name" placeholder="Updated Event Name">
-        <input type="date" name="event_date">
-        <input type="time" name="event_time">
-        <input type="text" name="venue" placeholder="Updated Venue">
-        <textarea name="description" placeholder="Updated Description"></textarea>
-        <input type="file" name="image" accept="image/*">
-        <input type="number" name="ticket_price" placeholder="Updated Ticket Price">
-        <input type="number" name="max_tickets" placeholder="Updated Max Tickets">
-        <button type="submit">Update Event</button>
+        <select name="university_name" required>
+            <option value="" disabled selected>Select University</option>
+            <?php getUniAdmin($connect); ?>
+        </select>
+        <input type="text" name="event_name" placeholder="Updated Event Name" required>
+        <input type="date" name="event_date" required>
+        <input type="time" name="event_time" required>
+        <input type="text" name="venue" placeholder="Updated Venue" required>
+        <textarea name="description" placeholder="Updated Description" required></textarea>
+        <input type="file" name="image" accept="image/*" required>
+        <input type="number" name="ticket_price" placeholder="Updated Ticket Price" required>
+        <input type="number" name="num_of_tickets" placeholder="Updated Max Tickets" required>
+        <button type="submit" name="updateEv">Update Event</button>
+        <?php updateEvents($connect); ?>
     </form>
   </div>
   <div class="row">
-  <form action="/update-event" method="POST" enctype="multipart/form-data">
-        <h2>Update Event</h2>
-        <input type="number" name="event_id" placeholder="Event ID" required>
-        <input type="text" name="event_name" placeholder="Updated Event Name">
-        <input type="date" name="event_date">
-        <input type="time" name="event_time">
-        <input type="text" name="venue" placeholder="Updated Venue">
-        <textarea name="description" placeholder="Updated Description"></textarea>
-        <input type="file" name="image" accept="image/*">
-        <input type="number" name="ticket_price" placeholder="Updated Ticket Price">
-        <input type="number" name="max_tickets" placeholder="Updated Max Tickets">
-        <button type="submit">Update Event</button>
-    </form>
-  </div>
-  <div class="row">
-  <form action="/delete-event" method="POST">
+  <form action="manage-events.php" method="post">
         <h2>Delete Event</h2>
-        <input type="number" name="event_id" placeholder="Event ID" required>
-        <button type="submit">Delete Event</button>
+        <input type="number" name="eventId" placeholder="Event ID" required>
+        <button type="submit" name="delEv">Delete Event</button>
+        <?php deleteEv($connect); ?>
     </form>
   </div>
 </div>  

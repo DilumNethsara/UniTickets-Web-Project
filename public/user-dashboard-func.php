@@ -1,5 +1,7 @@
 <?php
 
+require_once "func.php";
+
 function updateUserDetails($connect,$getUid){
     if(isset($_POST['svUserDetails'])){
         $uName = $_POST['name'];
@@ -108,6 +110,84 @@ function addCard($connect,$uid){
                     }
         }
     }
+}
+
+
+function contatcAdmin($connect, $uid){
+    if(isset($_POST['sendMsg'])){
+        $name = $_POST['user-name'];
+        $email = $_POST['user-email'];
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+
+        $sql = "INSERT INTO Contact_Admin VALUES('','$name','$email','$subject','$message');";
+        $result = mysqli_execute_query($connect,$sql);
+
+        if($result){
+            echo "Message sent successfully";
+        }else{
+            echo "Something went wrong";
+        }
+    }
+}
+
+function viewHistory($connect,$uid){
+
+    $sql = "SELECT user_id,event_id,tickets_booked,total_price,booking_date,paymentStatus FROM bookings;";
+
+    $arr = GetData($connect,$sql);
+
+    foreach ($arr as $value) {
+        $getUid = $value['user_id'];
+        $getEvId = $value['event_id'];
+        $getCount = $value['tickets_booked'];
+        $price = $value['total_price'];
+        $date = $value['booking_date'];
+        $paymentStatus = $value['paymentStatus'];
+
+        if($getUid==$uid){
+            $sql1 = "SELECT event_name,university_id FROM events WHERE event_id=$getEvId;";
+            $arr2 = GetData($connect,$sql1);
+
+            foreach ($arr2 as $value) {
+                $uniId = $value['university_id'];
+                $eveName = $value['event_name'];
+
+                $sql2 = "SELECT name FROM universities WHERE university_id=$uniId;";
+                $result = mysqli_execute_query($connect,$sql2);
+
+                $uniName = '';
+
+                if ($result && $row = mysqli_fetch_assoc($result)) {
+                    $uniName = $row['name'];
+                }
+
+                if($uniName){
+
+                    ?>
+
+                        <div class="history-item">
+                            <div class="item-details">
+                            <h4><?php echo $eveName; ?></h4>
+                            <p><strong>Booked Date:</strong> <?php echo $date; ?></p>
+                            <p><strong>University:</strong> <?php echo $uniName; ?></p>
+                            <p><strong>Ticket Count : </strong> <?php echo $getCount; ?></p>
+                            </div>
+                            <div class="item-status">
+                            <p>
+                                <strong>Status:</strong> <span class="status-paid"><?php echo $paymentStatus; ?></span>
+                            </p>
+                            <p><strong>Amount:</strong> Rs. <?php echo $price; ?></p>
+                            </div>
+                        </div>
+                <?php
+                    
+                }
+            }
+
+        }
+    }
+
 }
 
 ?>

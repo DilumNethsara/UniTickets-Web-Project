@@ -4,6 +4,7 @@
   $getUser = $_SESSION['username'];
   $getStatus = $_SESSION['loginStatus'];
   $getCategory = $_SESSION['category'];
+  $getUid = $_SESSION['uid'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,8 @@
   <body>
         <?php
         
-          require_once 'navbar.php';
+          require_once '../public/navbar.php';
+          require_once '../public/user-dashboard-func.php';
 
           dashboard_navBar();
         
@@ -28,7 +30,7 @@
           
           <div class="contact-container">
             <h1>Contact Admin</h1>
-            <form id="contact-form">
+            <form id="contact-form" action="dashboard-contact.php" method="post">
                 <label for="user-name">Your Name:</label>
                 <input type="text" id="user-name" name="user-name" placeholder="Enter your name" required>
     
@@ -41,7 +43,10 @@
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
     
-                <button type="submit" class="btn-submit">Send Message</button>
+                <button type="submit" class="btn-submit" name="sendMsg">Send Message</button>
+
+                <?php contatcAdmin($connect,$getUid); ?>
+                
             </form>
         </div>
 

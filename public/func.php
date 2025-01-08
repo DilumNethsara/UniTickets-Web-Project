@@ -67,13 +67,12 @@ function signup($connect){
     }
 }
 
-
 function login($connect){
     if(isset($_POST['login'])){
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = "SELECT password,email,username,user_category FROM users";
+        $sql = "SELECT user_id,password,email,username,user_category FROM users";
 
         $arr = GetData($connect,$sql);
 
@@ -84,17 +83,32 @@ function login($connect){
             $getPw = $value['password'];
             $getUname = $value['username'];
             $getCategory = $value['user_category'];
+            $getUid = $value['user_id'];
 
             if ($email==$getEmail && $password==$getPw) {
                 $state = true;
-                session_start();
-                $_SESSION['email']=$getEmail;
-                $_SESSION['username']=$getUname;
-                $_SESSION['loginStatus']=true;
-                $_SESSION['category']=$getCategory;
-                header('Location: index.php');
-                break;
+                if(session_start()){
+                    session_reset();
+                    $_SESSION['email']=$getEmail;
+                    $_SESSION['username']=$getUname;
+                    $_SESSION['loginStatus']=true;
+                    $_SESSION['category']=$getCategory;
+                    $_SESSION['uid']=$getUid;
+                    header('Location: index.php');
+                    break;
+                }else{
+                    session_start();
+                    $_SESSION['email']=$getEmail;
+                    $_SESSION['username']=$getUname;
+                    $_SESSION['loginStatus']=true;
+                    $_SESSION['category']=$getCategory;
+                    $_SESSION['uid']=$getUid;
+                    header('Location: index.php');
+                    break;
+                }
             }else{
+                session_reset();
+                $_SESSION['loginStatus']=false;
                 $state = false;
             }
         }

@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  $getEmail = $_SESSION['email'];
+  $getUser = $_SESSION['username'];
+  $getStatus = $_SESSION['loginStatus'];
+  $getCategory = $_SESSION['category'];
+  $getId = $_SESSION['uniId'];
+  $getUid = $_SESSION['uid'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,6 +20,7 @@
   <?php
         
         require_once '../public/navbar.php';
+        require_once '../public/user-dashboard-func.php';
 
         dashboard_navBar();
       
@@ -23,13 +33,13 @@
 
         <div class="settings-section">
           <h2>Profile Information</h2>
-          <form>
-            <label for="name">Name:</label>
+          <form action="user-dashboard-profile.php" method="post">
+            <label for="name">User Name:</label>
             <input
               type="text"
               id="name"
               name="name"
-              value="John Doe"
+              value=""
               required
             />
 
@@ -38,22 +48,25 @@
               type="email"
               id="email"
               name="email"
-              value="johndoe@example.com"
+              value=""
               required
             />
 
             <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" value="+123 456 7890" />
+            <input type="text" id="phone" name="phone" value="" required/>
 
             <label>Are you an University Student? <a href="">Verify</a></label>
 
-            <button type="submit" class="btn-save">Save Changes</button>
+            <button type="submit" class="btn-save" name="svUserDetails">Save Changes</button>
+
+            <?php updateUserDetails($connect,$getUid); ?>
+
           </form>
         </div>
 
         <div class="settings-section">
           <h2>Change Password</h2>
-          <form>
+          <form action="user-dashboard-profile.php" method="post">
             <label for="current-password">Current Password:</label>
             <input
               type="password"
@@ -78,13 +91,14 @@
               required
             />
 
-            <button type="submit" class="btn-save">Update Password</button>
+            <button type="submit" class="btn-save" name="updatePw">Update Password</button>
+            <?php updatePassword($connect,$getUid); ?>
           </form>
         </div>
 
         <div class="settings-section">
           <h2>Payment Methods</h2>
-          <form>
+          <form action="user-dashboard-profile.php" method="post">
             <label for="card-name">Name on Card:</label>
             <input
               type="text"
@@ -117,7 +131,8 @@
               required
             />
 
-            <button type="submit" class="btn-save">Add Card</button>
+            <button type="submit" class="btn-save" name="addCard">Add Card</button>
+            <?php addCard($connect,$getUid); ?>
           </form>
         </div>
       </div>
