@@ -65,11 +65,11 @@
 </head>
 <body>
 <?php
+
     require_once "../public/navbar.php";
     require_once "../public/manage-events-func.php";
 
     admin_dashboard_navBar();
-
   ?>
 
     <div class="container text-center" style="margin-left: 200px;">
@@ -90,10 +90,7 @@
             </tr>
         </thead>
         <tbody>
- 
-            
                 <?php getDetails($connect); ?>
-           
         </tbody>
     </table>
   </div>

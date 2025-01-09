@@ -1,9 +1,18 @@
 <?php
+
+if(isset($_GET['event_id'])){
+  $id = $_GET['event_id'];
+}
+
   session_start();
   $getEmail = $_SESSION['email'];
   $getUser = $_SESSION['username'];
   $getStatus = $_SESSION['loginStatus'];
   $getCategory = $_SESSION['category'];
+
+  require_once '../public/connectDB.php';
+  require_once '../public/checkout-func.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,34 +28,49 @@
     <div class="container">
 
       <div class="movie-details">
-        <h2>MOVIE</h2>
-        <p>Passport (Sinhala)</p>
-        <h2>DATE</h2>
-        <p>2024-11-25</p>
-        <h2>TIME</h2>
-        <p>04:00 PM</p>
-        <h2>THEATER</h2>
-        <p>Willmax - Anuradhapura</p>
+        <h2>EVENT</h2>
+        <p><?php echo getTitle($connect,$id); ?></p>
+        <?php echo getDateTime($connect,$id); ?>
+        <h2>VENUE</h2>
+        <p><?php echo getUni($connect,$id); ?></p>
+        <form>
         <p>
             <div>
-                <button style="border-radius: 5px;">-</button>
-                <label style="margin-left: 5px; margin-right: 5px;">0</label>
-                <button style="border-radius: 5px;">+</button>
+            <label for="ticket_count">Number of Tickets: </label>
+            <input type="number" id="ticket_count" name="ticket_count" required max="5" min="1">
+    <br><br>
+
+    
             </div>
         </p>
-        <button class="book-now btn btn-secondary">Book Now</button>
+        <button class="book-now btn btn-secondary" name="book_now">Book Now</button>
+          
       </div>
 
       <div class="booking-summary">
         <h2>Booking Summary</h2>
-        <p>Title <span class="amount">2 x LKR 5000.00</span></p>
+        <p>Title <span class="amount1"><?php echo getTitle($connect,$id); ?></span></p>
         <hr />
-        <p>
-          <strong>Sub Total:</strong> <span class="amount">LKR 10 000.00</span>
-        </p>
+
         <p class="payable">
-          <strong>Amount:</strong> <span>LKR 10 000.00</span>
+          <strong>Amount:</strong> <span class="amount"><?php echo getAmount($connect,$id); ?></span>
         </p>
+
+        <script>
+          
+          const ticketPrice = <?php echo getAmount($connect,$id); ?>; 
+
+          const ticketCountInput = document.getElementById('ticket_count');
+          const amountSpan = document.querySelector('.amount');
+
+          ticketCountInput.addEventListener('input', function() {
+              const ticketCount = parseInt(ticketCountInput.value) || 0;
+              const totalAmount = ticketCount * ticketPrice;
+              amountSpan.textContent = 'LKR ' + totalAmount.toLocaleString() + '.00';
+          });
+    </script>
+
+        </form>
       </div>
   </div>
   </body>

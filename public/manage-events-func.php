@@ -11,15 +11,16 @@ function getUniAdmin($connect){
       $getName = $value['name'];
       $getId = $value['university_id'];
       ?>
-      <option value="1"><?php echo $getName; ?></option>
+      <option value="<?php echo $getName; ?>"><?php echo $getName; ?></option>
     <?php
-  
+
     }
-  
+
   }
 
 
   function addEv($connect){
+
     $status = $statusMsg = "";
 
     if(isset($_POST['addEvent'])){
@@ -52,6 +53,11 @@ function getUniAdmin($connect){
                     $status = 'success';
                     echo $status;
                     $statusMsg = "file uploaded successfully";
+                    ?>
+                    <script>
+                        window.location.href='manage-events.php';
+                    </script>
+                    <?php
                     exit();
 
                 }else{
@@ -67,10 +73,10 @@ function getUniAdmin($connect){
 
     }
 
-    echo $statusMsg;
+   echo $statusMsg;
   } 
 
-  function getDetails($connect){
+function getDetails($connect){
     $sql = "SELECT  event_id,university_name,event_name,event_date,event_time,venue,description,ticket_price ,max_tickets FROM events";
 
     $arr = GetData($connect,$sql);
@@ -160,7 +166,4 @@ function getUniAdmin($connect){
             $statusMsg="please select a file";
         }
     }
-  }
-
-
-?>
+  } ?>

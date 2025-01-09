@@ -8,8 +8,7 @@
   $getUser = $_SESSION['username'];
   $getStatus = $_SESSION['loginStatus'];
   $getCategory = $_SESSION['category'];
-  //$getName = $_SESSION['uniName'];
-  $getId = $_SESSION['uniId'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +26,7 @@
     require_once '../public/navbar.php';
     require_once '../public/connectDB.php';
     require_once "../public/event-func.php";
+    require_once "../public/event-card-func.php";
 
     fixNavPages($getStatus,$getEmail,$getUser,$getCategory,$connect);
   
@@ -39,55 +39,7 @@
         style="margin-bottom: 40px"
       >
         <div class="row">
-          <div class="col">
-            <div class="card" style="width: 18rem">
-              <img src="../img/slide/1.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Waiwarna</h5>
-                <p class="card-text">
-                  23th November 2024<br />University of Sri Jayawardhanapura<br />Auditorium
-                </p>
-                <a href="event-details.php" class="btn btn-primary">Book Now >></a>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card" style="width: 18rem">
-              <img src="../img/slide/2.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Sathsara Anurawa</h5>
-                <p class="card-text">
-                  15th August 2023<br />University of Peradeniya<br />Auditorium
-                </p>
-                <a href="#" class="btn btn-primary">Book Now >></a>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card" style="width: 18rem">
-              <img src="../img/slide/4.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Sathsara Anurawa</h5>
-                <p class="card-text">
-                  13th December 2024<br />University of Peradeniya<br />Auditorium
-                </p>
-                <a href="#" class="btn btn-primary">Book Now >></a>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card" style="width: 18rem">
-              <img src="../img/slide/4.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Sathsara Anurawa</h5>
-                <p class="card-text">
-                  13th December 2024<br />University of Peradeniya<br />Auditorium
-                </p>
-                <a href="#" class="btn btn-primary">Book Now >></a>
-              </div>
-            </div>
-          </div>
-        </div>
+          <?php showCards($connect,$id); ?>
       </div>
     </section>
 
